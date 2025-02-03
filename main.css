@@ -1,5 +1,4 @@
-@import "https://unpkg.com/open-props";
-@import "https://unpkg.com/open-props/normalize.min.css";
+
 
 :root {
   --bg: #242627;
@@ -15,8 +14,12 @@
   --transition: 0.5s;
 }
 
+.invis {
+  /* visibility: hidden; */
+  opacity: 0;
+}
+
 html {
-  height: 100vh;
   scrollbar-width: none;
 }
 
@@ -33,21 +36,66 @@ body {
 }
 
 .main_logo {
+  position: relative;
+  transform: translateX(42pc) translateY(10pc);
   height: 130px;
-  display: block;
-  margin: 1rem 1rem 1rem auto;
+  display: inline-flex;
+  margin: auto;
+  /* filter: invert(); */
 }
 
 .container {
-  max-height: 100vh;
+  /* height: 100vh; */
   overflow-y: scroll;
+  overflow-x: hidden;
   scrollbar-width: none;
+  position: relative;
   /* scroll-snap-type: y mandatory; */
+  z-index: 0;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);
+  background-size: cover;
 }
 
-section {
+.panel {
   height: 100vh;
-  scroll-snap-align: start;
+  position: relative;
+  /* scroll-snap-align: start; */
+}
+
+.p-container {
+  margin: 100px;
+}
+
+p span {
+  visibility: hidden;
+}
+
+.one {
+  /* background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%); */
+  /* height: fit-content; */
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: 120%; */
+  overflow-x: hidden;
+  /* filter: grayscale(100%) invert(100%) */
+
+}
+
+.two {
+  width: inherit;
+  /* background-color: #36AE7C; */
+}
+
+.three {
+  display: grid;
+  place-items: center;
+  /* background-color: #EB5353; */
+  z-index: 3;
 }
 
 .welcome-header {
@@ -58,79 +106,72 @@ section {
 }
 
 h2 {
-  font-family: "Lato";
+  font-family: "Oswald";
   font-size: 5rem;
-  color: var(--light-pink);
+  color: #2D4739;
   position: relative;
   left: -2rem;
-  /* animation: customAni1 .5s ease 0s 1 normal none; */
 }
 
 h1 {
   font-family: "Rockwell";
   font-size: 7rem;
   position: relative;
-  top: -4rem;
+  top: -3.5rem;
   left: 2rem;
-  /* animation: slide-in 0.1s forwards; */
-  /* animation-delay: .5s; */
   opacity: 1;
-  color: var(--pink);
+  color: #c6ecae;
   display: inline-flex;
 }
 
 .word-forge {
   opacity: 1;
   left: 3.5rem;
-  /* animation: slide-in 0.1s forwards; */
-  /* animation-delay: .65s; */
 }
 
-.one {
-  position: relative;
-  /* background-image: url("Earth.svg"); */
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  /* transition: all 2s ease-out; */
-  background-size: 130%;
 
-}
-
-.two {
-  position: relative;
-  width: inherit;
-  background-image: url("topography.svg");
-  background-repeat: repeat;
-}
 
 .cards {
+  opacity: 1;
+  visibility: visible;
   position: relative;
   width: 100vh;
   background-color: transparent;
   z-index: 1;
   display: grid;
+  /* justify-content: center; */
+  /* align-items: center; */
   place-content: center;
   grid-template-areas: "stack";
+  /* margin: auto; */
+  top: -100px;
+  left: 75px;
 }
 
 .card {
-  width: 420px;
+  width: 300px;
   height: 400px;
   position: relative;
-  box-shadow: 8px 8px 0px #000000;
   display: flex;
   flex-direction: column;
+  margin: 1rem;
+  border-radius: 25px;
+  box-shadow: 0px 20px 50px -10px rgba(0, 0, 0, 0.7);
 }
 
 .card:nth-child(2) {
-  right: 40px;
-  bottom: 40px;
+  left: 40px;
+  top: 40px;
 }
 
 .card:nth-child(3) {
-  right: 80px;
-  bottom: 80px;
+  left: 80px;
+  top: 80px;
+}
+
+.card:nth-child(4) {
+  left: 120px;
+  top: 40px;
 }
 
 .cards > * {
@@ -138,29 +179,25 @@ h1 {
 }
 
 .card-head {
-  background-color: #b0b2b8;
-  color: #4f5d2f;
-  font-family: "Kreon";
-  font-size: 3rem;
+  background-color: #0FA3B1;
+  color: #EDDEA4;
+  font-family: "Oswald";
+  font-size: 2rem;
   width: inherit;
-  padding: 0 1rem;
+  padding: .7rem 1rem;
+  border-radius: 25px 25px 0 0;
 }
 
 .card-body {
-  background-color: #cfd6ea;
-  color: #7d7e75;
+  background-color: #EDDEA4;
+  color: #0FA3B1;
   font-family: "Monaco";
-  font-size: 1.3rem;
+  font-size: 1rem;
   padding: 1.5rem;
   width: inherit;
   height: inherit;
-}
-
-.three {
-  display: grid;
-  place-items: center;
-  background-image: url("topography.svg");
-  background-repeat: repeat;
+  border-radius: 0 0 25px 25px;
+  /* box-shadow: 8px 8px 0px #000000; */
 }
 
 
@@ -172,87 +209,8 @@ h1 {
 
 p {
   font-size: 3rem;
-  background-color: #36AE7C;
+  /* background-color: #36AE7C; */
   width: max-content;
-  /* --animate-delay: 0.9s; */
-}
-
-@keyframes fade-in {
-
-  0%,
-  50% {
-    right: -10em;
-    opacity: .5;
-  }
-
-  60% {
-    right: -10em;
-    opacity: .5;
-  }
-}
-
-@keyframes slide-in {
-  from {
-    right: -10em;
-    opacity: 0;
-  }
-
-  to {
-    right: -2rem;
-    opacity: 1;
-  }
-}
-
-@keyframes customAni2 {
-  0% {
-    transform: scale(0.5);
-    transform-origin: 50% 100%;
-    opacity: .2;
-  }
-
-  40%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    transform-origin: 50% 100%;
-  }
-}
-
-@keyframes customAni1 {
-  0% {
-    animation-timing-function: ease-in;
-    opacity: .5;
-    transform: translateY(-100px);
-  }
-
-  24% {
-    opacity: .5;
-  }
-
-  40% {
-    animation-timing-function: ease-in;
-    transform: translateY(-24px);
-  }
-
-  65% {
-    animation-timing-function: ease-in;
-    transform: translateY(-12px);
-  }
-
-
-  25%,
-  55%,
-  75%,
-  87% {
-    animation-timing-function: ease-out;
-    transform: translateY(0px);
-  }
-
-  100% {
-    animation-timing-function: ease-out;
-    opacity: 1;
-    transform: translateY(0px);
-  }
 }
 
 .fire {
@@ -309,6 +267,8 @@ p {
   object-fit: cover;
   overflow: hidden;
   flex: 1;
+  opacity: 0;
+  position: relative;
 }
 
 .img-grid img:hover {
