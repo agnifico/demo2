@@ -1,0 +1,48 @@
+:root {
+    --bg: #242627;
+    --light-pink: #FFD0D0;
+    --pink: #FF9EAA;
+    --text-white: #F7F9F2;
+    --fire: #EB5353;
+    --water: #4D96FF;
+    --earth: #36AE7C;
+    --wind: #F7F48B;
+}
+
+#cssportal-grid {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    width: 80%;
+    height: 80%;
+}
+
+#div1 {
+    grid-area: 1/1/2/2;
+    background-color: var(--fire);
+}
+
+#div2 {
+    grid-area: 1/2/2/3;
+    background-color: var(--water);
+}
+
+#div3 {
+    grid-area: 1/3/2/4;
+    background-color: var(--earth);
+}
+
+#div4 {
+    grid-area: 1/4/2/5;
+    background-color: var(--wind);
+}
+
+#div1:hover,
+#div2:hover,
+#div3:hover,
+#div4:hover {
+    z-index: 1;
+    grid-area: 1/1/2/5;
+    transition: all .8s ease;
+}

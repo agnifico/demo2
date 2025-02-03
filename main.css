@@ -106,27 +106,27 @@ p span {
 }
 
 h2 {
-  font-family: "Oswald";
-  font-size: 5rem;
-  color: #2D4739;
+  font-family: "Forum";
+  font-size: 7rem;
+  color: #F1DEDE;
   position: relative;
-  left: -2rem;
+  left: 0rem;
 }
 
 h1 {
-  font-family: "Rockwell";
-  font-size: 7rem;
+  font-family: "Bree Serif";
+  font-size: 9rem;
   position: relative;
-  top: -3.5rem;
-  left: 2rem;
+  top: -7rem;
+  left: -.5rem;
   opacity: 1;
-  color: #c6ecae;
   display: inline-flex;
+  color: #FE938C;
 }
 
 .word-forge {
   opacity: 1;
-  left: 3.5rem;
+  left: 2.5rem;
 }
 
 
@@ -179,9 +179,9 @@ h1 {
 }
 
 .card-head {
-  background-color: #0FA3B1;
-  color: #EDDEA4;
-  font-family: "Oswald";
+  background-color: #412234;
+  color: #F7A278;
+  font-family: "Forum";
   font-size: 2rem;
   width: inherit;
   padding: .7rem 1rem;
@@ -189,10 +189,11 @@ h1 {
 }
 
 .card-body {
-  background-color: #EDDEA4;
-  color: #0FA3B1;
-  font-family: "Monaco";
-  font-size: 1rem;
+  background-color: #E2DCDE;
+  color: #412234;
+  font-family: "Inconsolata";
+  font-weight: 300;
+  font-size: 1.3rem;
   padding: 1.5rem;
   width: inherit;
   height: inherit;
