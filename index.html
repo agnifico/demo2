@@ -7,74 +7,114 @@
     <title>jxnesforge</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bree+Serif&family=Crete+Round:ital@0;1&family=Forum&family=Inconsolata:wght@200..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="main.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bree+Serif&family=Crete+Round:ital@0;1&family=Forum&family=Inconsolata:wght@200..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap"
+        rel="stylesheet">
+    <!-- <link rel="stylesheet" href="main.css"> -->
+    <link rel="stylesheet" href="v2.css">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/CustomEase.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollToPlugin.min.js"></script>
     <script src="app.js" defer></script>
 </head>
 
 <body>
-    <div class="container">
-        <section class="one panel">
-            <img src="Logo_Main.svg" alt="" class="main_logo">
-            <div class="welcome-header">
-                <h2>Welcome to</h2><br>
-                <h1 class="word-the">the </h1>
-                <h1 class="word-forge"> Forge</h1>
-            </div>
-        </section>
-        <section class="two panel">
-            <div class="horizontal">
-                <div class="cards">
-                    <div class="card" id="gd">
-                        <div class="card-head">Graphic Designer</div>
-                        <div class="card-body">I am a skilled illustrator across various styles of art and design. I
-                            work
-                            with Affinity Designer 2, assisted by an iPad and a Pencil.</div>
-                    </div>
-
-                    <div class="card" id="wd">
-                        <div class="card-head">Web Developer</div>
-                        <div class="card-body">Those four years on computer engineering have to account for something,
-                            right? Backend? Frontend? I don't really see a difference. I gotchu fam.</div>
-                    </div>
-
-                    <div class="card" id="cw">
-                        <div class="card-head">Content Writer</div>
-                        <div class="card-body">I used to be the Editor-in-Chief of my college media organisation, while
-                            also
-                            working with the yearbook team, The Editorial Board. I'm no Hemingway, but I can handle my
-                            own
-                            when it comes to copy writing, or editing.</div>
-                    </div>
-
-                    <div class="card" id="bs">
-                        <div class="card-head">Branding Strategist</div>
-                        <div class="card-body">Above all, I like telling stories. Presenting ideas. Persuading, and
-                            convincing. They usually work, and you know why? Because I believe in my stories.<br> I know
-                            how to do <i>that</i> with visuals. Let me show you.</div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-        <section class="three panel">
-            <div class="img-grid">
-                <img src="images/Earth2.jpg" alt="" srcset="">
-                <img src="images/Fire2.jpg" alt="" srcset="">
-                <img src="images/Water3.jpg" alt="" srcset="">
-                <img src="images/Earth3.jpg" alt="" srcset="">
-                <img src="images/Wind2.jpg" alt="" srcset="">
-                <img src="images/Fire5.jpg" alt="" srcset="">
-                <img src="images/Wind3.jpg" alt="" srcset="">
-                <img src="images/Water2.jpg" alt="" srcset="">
-            </div>
-        </section>
+    <div class="bg-layer">
+        <audio id="hard-click" src="mixkit-hard-typewriter-click-1119.wav"></audio>
+    <audio id="soft-click" src="mixkit-typewriter-soft-click-1125.wav"></audio>
+    <audio id="wine-glass" src="mixkit-wine-glass-clink-2936.wav"></audio>
+        <video autoplay muted loop>
+            <!-- <source src="images/4186948-hd_1920_1080_25fps.mp4" type="video/mp4"> -->
+        </video>
+        
     </div>
+    <section class="one panel">
+        <img src="Logo_Main.svg" alt="" class="main_logo">
+        <div class="welcome-header">
+            <h2>Welcome to</h2><br>
+            <h1 class="word-the">the </h1>
+            <h1 class="word-forge"> Forge</h1>
+        </div>
+    </section>
+    <section class="two panel">
+        <div class="horizontal">
+            <div class="cards">
+                <div class="card" id="gd" onclick="openTab('text-for-gd', 'card-text-right', 'flex')" onmouseover="PlaySound('soft-click')" onmouseout="StopSound('soft-click')">
+                    <div class="card-head">Graphic Designer</div>
+                    <div class="card-body">I am a skilled illustrator across various styles of art and design. I
+                        work
+                        with Affinity Designer 2, assisted by an iPad and a Pencil.</div>
+                </div>
 
+                <div class="card" id="wd" onclick="openTab('text-for-wd', 'card-text-right', 'flex')" onmouseover="PlaySound('soft-click')" onmouseout="StopSound('soft-click')">
+                    <div class="card-head">Web Developer</div>
+                    <div class="card-body">Those four years on computer engineering have to account for something,
+                        right? Backend? Frontend? I don't really see a difference. I gotchu fam.</div>
+                </div>
 
+                <div class="card" id="cw" onclick="openTab('text-for-cw', 'card-text-right', 'flex')" onmouseover="PlaySound('soft-click')" onmouseout="StopSound('soft-click')">
+                    <div class="card-head">Content Writer</div>
+                    <div class="card-body">I used to be the Editor-in-Chief of my college media organisation, while
+                        also
+                        working with the yearbook team, The Editorial Board. I'm no Hemingway, but I can handle my
+                        own
+                        when it comes to copy writing, or editing.</div>
+                </div>
+
+                <div class="card" id="bs" onclick="openTab('text-for-bs', 'card-text-right', 'flex')" onmouseover="PlaySound('soft-click')" onmouseout="StopSound('soft-click')">
+                    <div class="card-head">Branding Strategist</div>
+                    <div class="card-body">Above all, I like telling stories. Presenting ideas. Persuading, and
+                        convincing. They usually work, and you know why? Because I believe in my stories.<br> I know
+                        how to do <i>that</i> with visuals. Let me show you.</div>
+                </div>
+
+            </div>
+            <div class="text-box">
+                <p class="card-text-right" id="text-for-gd">
+                    I am a skilled illustrator across various styles of art and design. I work with Affinity Designer 2, assisted by an iPad and a Pencil.
+                </p>
+                <p class="card-text-right" id="text-for-wd" style="display:none">
+                    Those four years on computer engineering have to account for something, right? Backend? Frontend? I don't really see a difference. I gotchu fam.
+                </p>
+                <p class="card-text-right" id="text-for-cw" style="display:none"> 
+                    I used to be the Editor-in-Chief of my college media organisation, while also working with the yearbook team, The Editorial Board. I'm no Hemingway, but I can handle my own when it comes to copy writing, or editing.
+                </p>
+                <p class="card-text-right" id="text-for-bs" style="display:none">
+                    Above all, I like telling stories. Presenting ideas. Persuading, and convincing. They usually work, and you know why? Because I believe in my stories. I know how to do that with visuals. Let me show you.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="three panel">
+        <div class="controls">
+            <div class="gallery-name" onclick="openTab('img-grid-one', 'img-grid', 'flex')">
+                Isometric
+            </div>
+            <div class="gallery-name" onclick="openTab('img-grid-two', 'img-grid', 'flex')">
+                More Isometric
+            </div>
+        </div>
+        <div class="img-grid" id="img-grid-one">
+            <img src="images/Earth2.jpg" alt="" srcset="">
+            <img src="images/Fire2.jpg" alt="" srcset="">
+            <img src="images/Water3.jpg" alt="" srcset="">
+            <img src="images/Earth3.jpg" alt="" srcset="">
+            <img src="images/Wind2.jpg" alt="" srcset="">
+            <img src="images/Fire5.jpg" alt="" srcset="">
+            <img src="images/Wind3.jpg" alt="" srcset="">
+            <img src="images/Water2.jpg" alt="" srcset="">
+        </div>
+        <div class="img-grid" id="img-grid-two" style="display:none">
+            <img src="images/Wind2.jpg" alt="" srcset="">
+            <img src="images/Fire3.jpg" alt="" srcset="">
+            <img src="images/Water5.jpg" alt="" srcset="">
+            <img src="images/Earth3.jpg" alt="" srcset="">
+        </div>
+    </section>
+    <section class="four panel">
+        Helloz
+    </section>
 
 </body>
 

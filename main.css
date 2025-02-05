@@ -1,5 +1,4 @@
 
-
 :root {
   --bg: #242627;
   --light-pink: #FFD0D0;
@@ -52,15 +51,12 @@ body {
   position: relative;
   /* scroll-snap-type: y mandatory; */
   z-index: 0;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  background: linear-gradient(109.6deg, rgb(0, 0, 0) 11.2%, rgb(11, 132, 145) 91.1%);
-  background-size: cover;
+  background-color: #242627;
 }
 
 .panel {
   height: 100vh;
+  width: 100vw;
   position: relative;
   /* scroll-snap-align: start; */
 }
@@ -74,27 +70,23 @@ p span {
 }
 
 .one {
-  /* background-color: #FF3CAC;
-  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%); */
-  /* height: fit-content; */
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-position: center;
-  /* background-size: 120%; */
   overflow-x: hidden;
-  /* filter: grayscale(100%) invert(100%) */
-
+  height: fit-content;
 }
 
 .two {
-  width: inherit;
+  width: 100vw;
   /* background-color: #36AE7C; */
 }
 
 .three {
-  display: grid;
-  place-items: center;
-  /* background-color: #EB5353; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* place-items: center; */
+  background-color: #242627;
   z-index: 3;
 }
 
@@ -129,13 +121,18 @@ h1 {
   left: 2.5rem;
 }
 
-
+.horizontal {
+  height: inherit;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+}
 
 .cards {
   opacity: 1;
   visibility: visible;
   position: relative;
-  width: 100vh;
+  width: 60vh;
   background-color: transparent;
   z-index: 1;
   display: grid;
@@ -148,15 +145,31 @@ h1 {
   left: 75px;
 }
 
+.text-box {
+  display: flex;
+  /* margin-left: 300px; */
+  justify-content: center;
+  align-items: center;
+  width: 40vw;
+  margin: 0 0 0 auto;
+  background-color: #36AE7C;
+  padding: 1rem;
+}
+
 .card {
-  width: 300px;
-  height: 400px;
+  width: 240px;
+  height: 350px;
   position: relative;
   display: flex;
   flex-direction: column;
   margin: 1rem;
   border-radius: 25px;
   box-shadow: 0px 20px 50px -10px rgba(0, 0, 0, 0.7);
+}
+
+.card:hover {
+  z-index: 9;
+  cursor: pointer;
 }
 
 .card:nth-child(2) {
@@ -171,7 +184,7 @@ h1 {
 
 .card:nth-child(4) {
   left: 120px;
-  top: 40px;
+  top: 120px;
 }
 
 .cards > * {
@@ -193,7 +206,7 @@ h1 {
   color: #412234;
   font-family: "Inconsolata";
   font-weight: 300;
-  font-size: 1.3rem;
+  font-size: 1rem;
   padding: 1.5rem;
   width: inherit;
   height: inherit;
@@ -201,17 +214,9 @@ h1 {
   /* box-shadow: 8px 8px 0px #000000; */
 }
 
-
-.horizontal {
-  height: inherit;
-  display: flex;
-  width: 200vh;
-}
-
 p {
-  font-size: 3rem;
-  /* background-color: #36AE7C; */
-  width: max-content;
+  font-size: 2rem;
+  font-family: "Inconsolata";
 }
 
 .fire {
@@ -268,7 +273,7 @@ p {
   object-fit: cover;
   overflow: hidden;
   flex: 1;
-  opacity: 0;
+  opacity: 1;
   position: relative;
 }
 
@@ -276,4 +281,23 @@ p {
   --brightness: 1.15;
   --grayscale: 0;
   flex: var(--magnifier);
+}
+
+.controls {
+  /* background-color: #242627; */
+  /* width: inherit; */
+  text-align: center;
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.gallery-name {
+  /* background-color: #412234; */
+  font-family: "Bree Serif";
+  font-size: 2rem;
+  padding: .5rem 1rem;
+  border: 3px solid goldenrod;
+  margin: auto;
 }

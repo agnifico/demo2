@@ -1,0 +1,267 @@
+:root {
+    --bg: #242627;
+    --light-pink: #FFD0D0;
+    --pink: #FF9EAA;
+    --text-white: #F7F9F2;
+    --fire: #EB5353;
+    --water: #4D96FF;
+    --earth: #36AE7C;
+    --wind: #F7F48B;
+
+    --sub-header-font: "Forum";
+    --header-font: "Bree Serif";
+    --text-font: "Inconsolata";
+}
+
+* {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    width: 100vw;
+    height: 100vh;
+    overflow-x: clip;
+    overflow-y: scroll;
+}
+
+.main_logo {
+    aspect-ratio: 1;
+    height: 150px;
+}
+
+.panel {
+    width: 100vw;
+    height: 100vh;
+    /* opacity: .3; */
+}
+
+.bg-layer {
+    background-color: #242627;
+    /* background-image: url("images/Earth.svg"); */
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    /* filter: grayscale(); */
+}
+
+
+.one {
+    background-color: transparent;
+    position: sticky;
+    z-index: -1;
+}
+
+.two {
+    background-color: transparent;
+}
+
+.three {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* z-index: 3; */
+}
+
+.four {
+    background-color: transparent;
+}
+
+.welcome-header {
+    /* background-color: rgb(247, 249, 242, .5); */
+    width: max-content;
+    margin: 10rem auto 0;
+    text-align: center;
+}
+
+h2 {
+    font-family: "Forum";
+    font-size: 7rem;
+    color: #F1DEDE;
+    position: relative;
+    left: 0rem;
+}
+
+h1 {
+    font-family: "Bree Serif";
+    font-size: 9rem;
+    position: relative;
+    top: -7rem;
+    left: -.5rem;
+    opacity: 1;
+    display: inline-flex;
+    color: #FE938C;
+}
+
+.word-forge {
+    opacity: 1;
+    left: 2.5rem;
+}
+
+.text-box {
+    display: flex;
+    /* margin-left: 300px; */
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    margin: auto 0 auto auto;
+    background-color: var(--pink);
+    padding: 2rem;
+    font-family: var(--text-font);
+    color: var(--text-white);
+    font-size: 1.5rem;
+    height: 50%;
+}
+
+
+/* IMAGE GRID */
+
+.controls {
+    /* background-color: #242627; */
+    /* width: inherit; */
+    text-align: center;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.gallery-name {
+    /* background-color: #412234; */
+    font-family: "Bree Serif";
+    font-size: 2rem;
+    padding: .5rem 1rem;
+    border: 3px solid goldenrod;
+    margin: auto;
+    color: goldenrod;
+}
+
+.gallery-name:hover {
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.img-grid {
+    width: 80vw;
+    overflow-x: clip;
+    scrollbar-width: none;
+    height: 50vmin;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--gap);
+}
+
+.img-grid img {
+    --brightness: 0.75;
+    --grayscale: 1;
+    transition: flex var(--transition), filter var(--transition);
+    height: 100%;
+    filter: grayscale(var(--grayscale)) brightness(var(--brightness));
+    object-fit: cover;
+    overflow: hidden;
+    flex: 1;
+    opacity: 0;
+    position: relative;
+}
+
+.img-grid img:hover {
+    --brightness: 1.15;
+    --grayscale: 0;
+    flex: var(--magnifier);
+}
+
+/* CARDS */
+
+.horizontal {
+    height: inherit;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+
+.cards {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    width: 60vh;
+    background-color: transparent;
+    z-index: 1;
+    display: grid;
+    /* justify-content: center; */
+    /* align-items: center; */
+    place-content: center;
+    grid-template-areas: "stack";
+    /* margin: auto; */
+    top: -100px;
+    left: 75px;
+}
+
+
+.card {
+    width: 240px;
+    height: 350px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    border-radius: 25px;
+    box-shadow: 0px 20px 50px -10px rgba(0, 0, 0, 0.7);
+}
+
+.card:hover {
+    z-index: 9;
+    cursor: pointer;
+}
+
+.card:nth-child(2) {
+    left: 40px;
+    top: 40px;
+}
+
+.card:nth-child(3) {
+    left: 80px;
+    top: 80px;
+}
+
+.card:nth-child(4) {
+    left: 120px;
+    top: 120px;
+}
+
+.cards>* {
+    grid-area: stack;
+}
+
+.card-head {
+    background-color: #412234;
+    color: #F7A278;
+    font-family: "Forum";
+    font-size: 2rem;
+    width: inherit;
+    padding: .7rem 1rem;
+    border-radius: 25px 25px 0 0;
+}
+
+.card-body {
+    background-color: #E2DCDE;
+    background-image: url("images/signal-2025-02-03-184219_003.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #412234;
+    font-family: "Inconsolata";
+    font-weight: 300;
+    font-size: 1rem;
+    padding: 1.5rem;
+    width: inherit;
+    height: inherit;
+    border-radius: 0 0 25px 25px;
+    /* box-shadow: 8px 8px 0px #000000; */
+}

@@ -1,5 +1,79 @@
-gsap.registerPlugin(CustomEase);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(CustomEase);
+
+function PlaySound(soundobj) {
+    var thissound = document.getElementById(soundobj);
+    thissound.play();
+  }
+  
+  function StopSound(soundobj) {
+    var thissound = document.getElementById(soundobj);
+    thissound.pause();
+    thissound.currentTime = 0;
+  }
+
+document.querySelector('video').playbackRate = 0.5;
+document.querySelector('video').play();
+
+function openTab(tabName, className, displayType, thissound="soft-click") {
+    PlaySound(thissound);
+    var i;
+    var x = document.getElementsByClassName(className);
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = displayType;
+}
+
+
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+let panels = gsap.utils.toArray(".panel"),
+    observer,
+    scrollTween;
+
+if (ScrollTrigger.isTouch === 1) {
+    observer = ScrollTrigger.normalizeScroll(true);
+}
+
+// on touch devices, ignore touchstart events if there's an in-progress tween so that touch-scrolling doesn't interrupt and make it wonky
+document.addEventListener("touchstart", e => {
+    if (scrollTween) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+    }
+}, { capture: true, passive: false })
+
+function goToSection(i) {
+    scrollTween = gsap.to(window, {
+        scrollTo: { y: i * innerHeight, autoKill: false },
+        onStart: () => {
+            if (!observer) return;
+            observer.disable(); // for touch devices, as soon as we start forcing scroll it should stop any current touch-scrolling, so we just disable() and enable() the normalizeScroll observer
+            observer.enable();
+        },
+        duration: .5,
+        onComplete: () => scrollTween = null,
+        overwrite: true
+    });
+}
+
+panels.forEach((panel, i) => {
+    ScrollTrigger.create({
+        trigger: panel,
+        start: "top bottom",
+        end: "+=199%",
+        markers: true,
+        onToggle: self => self.isActive && !scrollTween && goToSection(i)
+    });
+});
+
+// just in case the user forces the scroll to an inbetween spot (like a momentum scroll on a Mac that ends AFTER the scrollTo tween finishes):
+ScrollTrigger.create({
+    start: 0,
+    end: "max",
+    snap: 1 / (panels.length - 1)
+})
 
 const timeline = gsap.timeline({ defaults: { duration: 2 } });
 
@@ -33,122 +107,162 @@ timeline.from('h2', {
 }, '<.4');
 
 gsap.to('.one', {
-    // xPercent: -100,
-    opacity: 0,
+    x: '100%',
     duration: 0.5,
-    ease: "fade.Out",
     scrollTrigger: {
-        trigger: ".container",
-        start: "10% top",
-        endTrigger: ".two",
-        end: "top top",
-        toggleActions: "restart restart reverse reverse",
-        // pin: ".container",
-        pinSpacing: true,
-        // markers: true,
-        // scrub: true
+        trigger: '.one',
+        start: "1% top",
+        toggleActions: "restart pause reverse pause",
     }
 })
-
 
 
 const tl2 = gsap.timeline({
     scrollTrigger: {
         trigger: '.one',
-        //   scrub: 1,
-        start: "60% top",
-        end: "bottom top",
+        // scrub: 1,
+        start: "1% top",
+        // end: "bottom top",
         // markers: true,
-        toggleActions: "restart complete reverse reverse",
+        toggleActions: "restart resume reverse resume",
     }
 });
 tl2.from('.cards', {
-    y: "-200px",
+    y: "200px",
     duration: .5,
     opacity: 0,
-    scrub: 2,
     // ease: 'bounce',
     // stagger: 0.1
-});
+})
+
+gsap.from('.text-box', {
+    x: 600,
+    // y: 600,
+    duration: .5,
+    // ease: 'bounce',
+    // stagger: 0.1,
+    scrollTrigger: {
+        trigger: '.one',
+        // scrub: 1,
+        start: "1% top",
+        // end: "center top",
+        // pin: '.text-box',
+        // markers: true,
+        toggleActions: "restart pause reverse pause",
+    }
+})
 
 const tl3 = gsap.timeline({
     scrollTrigger: {
         trigger: '.two',
-        scrub: 1,
-        start: "60% top",
-        endTrigger: '.three',
-        end: "top top",
+        // scrub: 1,
+        start: "1% top",
+        // endTrigger: '.three',
+        // end: "top top",
         // markers: true,
-        toggleActions: "restart complete reverse reverse",
+        toggleActions: "restart pause reverse pause"
     }
 });
-tl3.to('.img-grid img', {
+
+const tl35 = gsap.timeline({
+    scrollTrigger: {
+        trigger: '.two',
+        // scrub: 1,
+        start: "1% top",
+        // endTrigger: '.three',
+        // end: "top top",
+        // markers: true,
+        toggleActions: "restart resume reverse resume"
+    }
+});
+tl3.to('.text-box', {
+    opacity: 0,
+    duration: .2,
+    x: "100%",
+})
+tl35.to('.img-grid img', {
     // position: 'relative',
     // flex: 1,
     opacity: 1,
-    scrub: .5,
+    duration: 1.5,
+    // scrub: .5,
     // ease: 'bounce',
     stagger: 1 / 8
 });
 
 let tl = gsap.timeline({
     scrollTrigger: {
-        trigger: ".two",
-        start: "top top",
-        endTrigger: ".two",
-        end: "10%",
-        pin: ".two",
+        trigger: ".one",
+        start: "99% top",
+        // pin: ".two",
         // markers: true,
-        scrub: true,
+        // scrub: true,
         // stagger: "20%",
-        toggleActions: "restart complete reverse reverse",
+        toggleActions: "restart resume reverse resume",
     }
 });
 
 tl.to('#gd', {
-    x: -150,
-    y: 50,
+    x: -50,
+    y: 30,
     rotate: -10,
     duration: .2,
 }).to('#wd', {
-    x: 100,
-    y: 50,
+    x: 200,
+    y: 0,
     rotate: 5,
     duration: .2,
 }).to('#cw', {
-    x: 350,
-    y: 50,
+    x: -50,
+    y: 100,
     rotate: -5,
     duration: .2,
 }).to('#bs', {
-    x: 600,
+    x: 150,
     y: 100,
     rotate: 10,
     duration: .2,
 });
 
-
-const paragraph = document.querySelector(".paragraph");
-const chars = [...paragraph.textContent.trim()];
-
-paragraph.textContent = "";
-
-for (const char of chars) {
-  const charSpan = document.createElement("span");
-  charSpan.textContent = char;
-  paragraph.appendChild(charSpan);
-}
-
-const spans = paragraph.querySelectorAll(":scope > span");
-
-let tl4 = gsap.timeline({
-  scrollTrigger: {
-    trigger: ".p-container",
-    start: "top center",
-    end: "bottom center",
-    scrub: 1,
-    // markers: true
-  }
+let tl5 = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".two",
+        start: "99% top",
+        toggleActions: "restart resume reverse resume",
+    }
 });
 
-tl4.to(spans, { autoAlpha: 1, stagger: 0.1 });
+tl5.from('.gallery-name', {
+    y: 50,
+    ease: 'fade.In',
+    opacity: 0,
+    duration: 0.25,
+    delay: 0.4
+})
+
+
+// const paragraph = document.querySelector(".paragraph");
+// const chars = [...paragraph.textContent.trim()];
+
+// paragraph.textContent = "";
+
+// for (const char of chars) {
+//     const charSpan = document.createElement("span");
+//     charSpan.textContent = char;
+//     paragraph.appendChild(charSpan);
+// }
+
+// const spans = paragraph.querySelectorAll(":scope > span");
+
+// let tl4 = gsap.timeline({
+//     scrollTrigger: {
+//         trigger: ".p-container",
+//         start: "top center",
+//         end: "bottom center",
+//         scrub: 1,
+//         // markers: true
+//     }
+// });
+
+// tl4.to(spans, { autoAlpha: 1, stagger: 0.1 });
+
